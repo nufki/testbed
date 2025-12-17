@@ -27,4 +27,9 @@ class CalculatorController(
     ): Double {
         return calculatorService.multiply(value1, value2)
     }
+
+    @GetMapping("/sqrt")
+    fun sqrt(@RequestParam value1: Double): Double {
+        return calculatorService.externalSqrt(value1)
+    }
 }

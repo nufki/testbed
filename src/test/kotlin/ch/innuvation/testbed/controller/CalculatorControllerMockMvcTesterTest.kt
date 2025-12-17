@@ -8,7 +8,13 @@ import org.springframework.test.web.servlet.assertj.MockMvcTester
 import org.assertj.core.api.Assertions.assertThat
 import org.springframework.test.context.bean.override.mockito.MockitoBean
 import org.mockito.kotlin.whenever
+import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock
 
+@AutoConfigureWireMock(
+    port = 0,
+    stubs = ["classpath:/wiremock/mappings"],
+    files = ["classpath:/wiremock"]
+)
 @WebMvcTest(controllers = [CalculatorController::class])
 class CalculatorControllerMockMvcTesterTest(
 ) {
